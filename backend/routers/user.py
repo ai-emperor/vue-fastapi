@@ -11,7 +11,7 @@ router = APIRouter(prefix="/users", tags=["user"])
 @router.post("/register/", response_model=UserDisplay)
 async def add_user(user_schema: UserCreate, db_session: AsyncSession = Depends(get_async_session)):
     user_repo = UserRepository(db_session)
-
+    print(f"USER REPO==={user_repo}")
     user = await user_repo.get_user_by_username(user_schema.username)
     if user:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Username already exists")

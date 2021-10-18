@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "vue3fastapi-to-do"
+name = "backend"
 version = "0.1.0"
 description = "Sticky-do App"
 authors = ["Bekzod Mirahmedov <notarious2@gmail.com>"]
 readme = "README.md"
-packages = [{include = "vue3fastapi_to_do"}]
+packages = [{include = "backend"}]
 
 [tool.poetry.dependencies]
-python = "3.11.3"
+python = "3.12.5"
 fastapi = "0.110.0"
 uvicorn = "0.27.1"
 sqlalchemy = {extras = ["asyncio"], version = "2.0.28"}
