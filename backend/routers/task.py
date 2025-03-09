@@ -16,7 +16,6 @@ from backend.schemas import (
 
 router = APIRouter(prefix="/task", tags=["task"])
 
-
 @router.post("/", response_model=DisplayTaskSchema)
 async def add_task(
     create_task_schema: CreateTaskSchema,
@@ -27,7 +26,6 @@ async def add_task(
     task = await task_repo.create_task(create_task_schema, current_user)
     return task
 
-
 @router.get("/", response_model=list[DisplayTaskSchema])
 async def get_tasks(
     selected_date: date,
@@ -37,7 +35,6 @@ async def get_tasks(
     task_repo = TaskRepository(db_session)
     tasks = await task_repo.get_tasks_by_date(selected_date, current_user)
     return tasks
-
 
 @router.patch("/update-order/")
 async def update_tasks_order(
@@ -50,7 +47,6 @@ async def update_tasks_order(
     await task_repo.bulk_update_priorities(priorities_schema.priorities, current_user)
 
     return "Priorities have been updated"
-
 
 @router.patch("/{task_id}/", response_model=DisplayTaskSchema)
 async def update_task(
@@ -77,7 +73,6 @@ async def update_task(
     updated_task = await task_repo.update_task(task, new_task=update_task_schema)
 
     return updated_task
-
 
 @router.delete("/{task_id}/")
 async def delete_task_by_id(
